@@ -1,1 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto';
+}
+
+form {
+    width: 80%;
+    margin-left: 10%;
+}
+
+label, input, span, th, td {
+    font-size: 24px !important;
+}
+
+table {
+    width: 100%;
+}
+  
+.mat-form-field {
+    width: 100%;
+}
+
+button {
+    margin: 0 10px 0 0 !important;
+    padding: 3px 15px !important;
+}
+
+.cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+    &.dark-backdrop {
+        background: #000;
+        opacity: 0.6 !important;
+    }
+}
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');

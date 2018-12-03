@@ -1,0 +1,83 @@
+
+<form (ngSubmit)="onSubmit()" #userForm="ngForm">
+
+  <h1>Cadastrar usuário</h1>
+
+  <br>
+  <h2>Ocupação</h2>
+  <br>
+  
+  <mat-form-field>
+    <mat-select id="ocupacao" required [(ngModel)]="model.ocupacao" name="ocupacao" placeholder="Ocupação">
+      <mat-option value="Aluno">Aluno</mat-option>
+      <mat-option value="Treinador">Treinador</mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+  <br>
+  <h2>Informações pessoais</h2>
+  <br>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Nome" id="nome" required [(ngModel)]="model.nome" name="nome">
+  </mat-form-field>
+  <br>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="E-mail" id="email" required [(ngModel)]="model.email" name="email">
+  </mat-form-field>
+  <br>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Telefone" id="telefone" required [(ngModel)]="model.telefone" name="telefone">
+  </mat-form-field>
+  <br>
+
+  
+  <br>
+  <h2>Endereço</h2>
+  <br>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Cidade" id="cidade" required [(ngModel)]="model.cidade" name="cidade">
+  </mat-form-field>
+  <br>
+  
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Bairro" id="bairro" required [(ngModel)]="model.bairro" name="bairro">
+  </mat-form-field>
+  <br>
+  
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Rua" id="rua" required [(ngModel)]="model.rua" name="rua">
+  </mat-form-field>
+  <br>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Número" id="numero" required [(ngModel)]="model.numero" name="numero">
+  </mat-form-field>
+  <br>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Complemento" id="complemento" [(ngModel)]="model.complemento" name="complemento">
+  </mat-form-field>
+  <br>
+
+  <div *ngIf="model.ocupacao != 'Treinador'">
+    <br>
+    <h2>Planos</h2>
+    <br>
+  
+  
+    <mat-form-field>
+      <mat-select id="plano" required [(ngModel)]="model.plano" name="plano" placeholder="Plano">
+        <mat-option *ngFor="let item of planos" [value]="item.nome">{{ item.nome }} ({{ item.valor }})</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <br><br>
+
+  <button mat-flat-button color="primary" type="submit" [disabled]="!userForm.form.valid">Cadastrar</button>
+  <br><br><br>
+</form>
