@@ -22,3 +22,11 @@ nav {
     padding: 20px 50px;
     margin-left: $sidenav;
 }
+.logo {
+    display: block; 
+    height: 350px; 
+    width: 350px; 
+    margin-top: 30px; 
+    margin-left: 50%; 
+    transform: translateX(-50%);
+}

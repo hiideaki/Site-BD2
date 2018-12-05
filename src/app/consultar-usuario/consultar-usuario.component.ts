@@ -16,6 +16,7 @@ export class ConsultarUsuarioComponent implements OnInit {
     {
       nome: "Marcelo Hideaki Iwata Kito",
       ocupacao: "Aluno",
+      cpf: "11",
       email: "hideaki09@hotmail.com",
       telefone: "(11) 94128-3644",
       cidade: "Bauru",
@@ -23,44 +24,33 @@ export class ConsultarUsuarioComponent implements OnInit {
       rua: "Rua Doutor Gonzaga Machado",
       numero: "7-108",
       complemento: "Cond. Camélias, Bloco 9, Apto. 21",
-      plano: "Mensal"
+      plano: "Black"
     },
     {
-      nome: "Vitor de Souza Cruzeiro",
+      nome: "Bruno Belluzo",
       ocupacao: "Aluno",
-      email: "vitor.cruzeiro@me.com",
-      telefone: "(11) 45666-3344",
-      cidade: "Macatuba",
-      bairro: "Catedral Central",
-      rua: "Alameda das Perdizes",
-      numero: "422",
+      cpf: "10",
+      email: "bruno@email.com",
+      telefone: "1234-5678",
+      cidade: "Bauru",
+      bairro: "Centro",
+      rua: "Rua Rodrigues Alves",
+      numero: "4-21",
       complemento: "",
-      plano: "Semanal"
+      plano: "Prata"
     },
     {
-      nome: "Paulo Eduardo Manzone Maia",
-      ocupacao: "Aluno",
-      email: "paulinhued@hotmail.com",
-      telefone: "(11) 12345-6789",
-      cidade: "Bauru",
-      bairro: "Jardim Marambá",
-      rua: "Rua Doutor Gonzaga Machado",
-      numero: "7-108",
-      complemento: "Cond. Camélias, Bloco 9, Apto. 21",
-      plano: "Trimestral"
-    },
-    {
-      nome: "Raul Tragante",
+      nome: "Rafael Takagi",
       ocupacao: "Treinador",
-      email: "raul.tragante@hotmail.com",
-      telefone: "(11) 12121-2121",
+      cpf: "1",
+      email: "rafael@email.com",
+      telefone: "9658-7458",
       cidade: "Bauru",
-      bairro: "Jardim Marambá",
-      rua: "Rua Doutor Gonzaga Machado",
+      bairro: "Centro",
+      rua: "Duque",
       numero: "7-108",
-      complemento: "Cond. Camélias, Bloco 8, Apto. 11",
-      plano: ""
-    },
+      complemento: ""
+    }
   ]
 
   public listaView: any;
@@ -78,7 +68,22 @@ export class ConsultarUsuarioComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('Diálogo fechado');
+      if(result) {
+        let aux = this.lista.find((item) => item.cpf === result.dados.cpf)
+          
+        if(result.salvar) {
+          let props = Object.getOwnPropertyDescriptors(aux);
+          for(let prop in props) {
+            aux[prop] = result[prop];        
+          }
+        } else {
+          this.lista.splice(this.lista.indexOf(aux), 1);
+          this.listaView = new MatTableDataSource(this.lista)
+        }
+      }
+
+
+      
     });
   }
 

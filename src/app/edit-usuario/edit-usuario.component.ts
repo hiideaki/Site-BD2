@@ -11,30 +11,22 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 export class EditUsuarioComponent implements OnInit {
   
   planos: any;
+  model: any;
 
-  constructor(public dialogRef: MatDialogRef<EditUsuarioComponent>, @Inject(MAT_DIALOG_DATA) public model: Usuario) { 
-    console.log(model)
-    
+  constructor(public dialogRef: MatDialogRef<EditUsuarioComponent>, @Inject(MAT_DIALOG_DATA) public user: Usuario) { 
+
+    this.model = Object.assign({}, user);
+
     this.planos = [
       {
-        nome: "Semanal",
-        valor: "R$ 20,00",
-        descricao: "08/12/2018"
+        nome: "Black",
+        valor: "180",
+        descricao: "Todo dia 10"
       },
       {
-        nome: "Mensal",
-        valor: "R$ 75,00",
-        descricao: "01/01/2019"
-      },
-      {
-        nome: "Trimestral",
-        valor: "R$ 200,00",
-        descricao: "01/03/2019"
-      },
-      {
-        nome: "Anual",
-        valor: "R$ 600,00",
-        descricao: "01/12/2019"
+        nome: "Prata",
+        valor: "70",
+        descricao: "Todo dia 20"
       }
     ]
   }
@@ -44,12 +36,11 @@ export class EditUsuarioComponent implements OnInit {
   }
 
   onSubmit() {
-    this.dialogRef.close();
-
+    this.dialogRef.close({salvar: true, dados: this.model});
   }
 
   delete() {
-    this.dialogRef.close();
+    this.dialogRef.close({salvar: false, dados: this.model});
     
   }
 

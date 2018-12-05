@@ -13,24 +13,14 @@ export class ConsultarPlanoComponent implements OnInit {
 
   lista = [
     {
-      nome: "Semanal",
-      valor: "R$ 20,00",
-      descricao: "08/12/2018"
+      nome: "Black",
+      valor: "180",
+      descricao: "Todo dia 10"
     },
     {
-      nome: "Mensal",
-      valor: "R$ 75,00",
-      descricao: "01/01/2019"
-    },
-    {
-      nome: "Trimestral",
-      valor: "R$ 200,00",
-      descricao: "01/03/2019"
-    },
-    {
-      nome: "Anual",
-      valor: "R$ 600,00",
-      descricao: "01/12/2019"
+      nome: "Prata",
+      valor: "70",
+      descricao: "Todo dia 20"
     }
   ]
 
@@ -49,7 +39,19 @@ export class ConsultarPlanoComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('Diálogo fechado');
+      if(result) {
+        let aux = this.lista.find((item) => item.nome === result.dados.nome)
+          
+        if(result.salvar) {
+          let props = Object.getOwnPropertyDescriptors(aux);
+          for(let prop in props) {
+            aux[prop] = result.dados[prop];        
+          }
+        } else {
+          this.lista.splice(this.lista.indexOf(aux), 1);
+          this.listaView = new MatTableDataSource(this.lista)
+        }
+      }
       
     });
   }

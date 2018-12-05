@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Plano } from '../model/plano';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-plano',
@@ -10,7 +11,7 @@ export class CadastroPlanoComponent implements OnInit {
 
   model = new Plano();
 
-  constructor() { 
+  constructor(private router: Router) { 
 
   }
 
@@ -18,7 +19,7 @@ export class CadastroPlanoComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.model)
+    this.router.navigate(['consultar-plano']);
   }
 
 }

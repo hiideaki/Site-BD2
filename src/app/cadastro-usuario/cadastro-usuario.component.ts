@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../model/usuario';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-usuario',
@@ -13,28 +14,18 @@ export class CadastroUsuarioComponent implements OnInit {
   public planos = [];
   public submitted = false;
 
-  constructor() { 
+  constructor(private router: Router) { 
     console.log(this.model)
     this.planos = [
       {
-        nome: "Semanal",
-        valor: "R$ 20,00",
-        descricao: "08/12/2018"
+        nome: "Black",
+        valor: "180",
+        descricao: "Todo dia 10"
       },
       {
-        nome: "Mensal",
-        valor: "R$ 75,00",
-        descricao: "01/01/2019"
-      },
-      {
-        nome: "Trimestral",
-        valor: "R$ 200,00",
-        descricao: "01/03/2019"
-      },
-      {
-        nome: "Anual",
-        valor: "R$ 600,00",
-        descricao: "01/12/2019"
+        nome: "Prata",
+        valor: "70",
+        descricao: "Todo dia 20"
       }
     ]
   }
@@ -44,7 +35,7 @@ export class CadastroUsuarioComponent implements OnInit {
     if(this.model.ocupacao === "Treinador") {
       this.model.plano = "";
     }
-    console.log(this.model)
+    this.router.navigate(['consultar-usuario']);
   }
 
   ngOnInit() {

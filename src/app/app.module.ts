@@ -16,6 +16,7 @@ import { ConsultarUsuarioComponent } from './consultar-usuario/consultar-usuario
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditUsuarioComponent } from './edit-usuario/edit-usuario.component';
 import { EditPlanoComponent } from './edit-plano/edit-plano.component';
+import { DadosService } from './dados.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,9 @@ import { EditPlanoComponent } from './edit-plano/edit-plano.component';
     EditUsuarioComponent,
     EditPlanoComponent,
   ],
-  providers: [],
+  providers: [
+    DadosService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

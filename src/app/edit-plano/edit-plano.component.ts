@@ -9,8 +9,11 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 })
 export class EditPlanoComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<EditPlanoComponent>, @Inject(MAT_DIALOG_DATA) public model: Plano) { 
+  model: any;
 
+  constructor(public dialogRef: MatDialogRef<EditPlanoComponent>, @Inject(MAT_DIALOG_DATA) public plano: Plano) { 
+
+    this.model = Object.assign({}, plano);
   }
 
   ngOnInit() {
@@ -18,13 +21,11 @@ export class EditPlanoComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log("salvar");
-    this.dialogRef.close();
+    this.dialogRef.close({salvar: true, dados: this.model});
   }
 
   delete() {
-    console.log("deletar");
-    this.dialogRef.close();
+    this.dialogRef.close({salvar: false, dados: this.model});
     
   }
 
